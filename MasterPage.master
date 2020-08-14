@@ -1,0 +1,672 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+
+    <script type="text/javascript" src="//platform-api.sharethis.com/js/sharethis.js#property=5afd119e8ee14d0011069c81&product=inline-share-buttons"></script>
+
+    <title>Hogwarts Institute</title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="keywords" content="HTML5 Template" />
+    <meta name="description" content="Hogwarts Institute" />
+    <meta name="author" content="hogwartsinstitute.in" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<link rel="manifest" href="/manifest.json" />
+<meta name="theme-color" content="#333"   />
+
+    <!-- Favicon hello -->    
+    <%-- <link rel="shortcut icon" href="images/favicon.ico" />--%>
+    <link rel="shortcut icon" href="images/wp2296420_small.jpg" /> 
+
+    <!-- font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,500,500i,600,700,800,900|Poppins:200,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Dosis:300,400,500,600,700,800">
+
+    <!-- Plugins -->
+    <link rel="stylesheet" type="text/css" href="css/plugins-css.css" />
+
+    <!-- revoluation -->
+    <link rel="stylesheet" type="text/css" href="revolution/css/settings.css" media="screen" />
+
+    <!-- Typography -->
+    <link rel="stylesheet" type="text/css" href="css/typography.css" />
+
+    <!-- Shortcodes -->
+    <link rel="stylesheet" type="text/css" href="css/shortcodes/shortcodes.css" />
+
+    <!-- Style -->
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link rel="stylesheet" type="text/css" href="css/shop.css" />
+
+    <!-- Responsive -->
+    <link rel="stylesheet" type="text/css" href="css/responsive.css" />
+    <%--     <link rel="stylesheet" type="text/css" href="css/plugins/bootstrap.min.css" />
+    --%>
+
+    <link rel="”stylesheet”" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/plugins/build.css" />
+    <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+
+    <script type="text/javascript">
+        function lol() {
+            $("#btnShowPopup").click();
+        }
+        function lolp2() {
+            $("#btnShowPopup2").click();
+        }
+        function lol2() {
+            $("#btnShowPopupp").click();
+        }
+
+        function lol3() {
+            $("#btnShowPopuppp").click();
+        }
+       
+        function lol1() {
+            window.location.href = "Reports/login";
+        }
+
+        function lol11() {
+            window.location.href = "Reports/signup";
+        }
+        $(window).load(function () {
+            var pagename = $("#<%= pagename.ClientID %>").val();
+            var pagename1 = $("#<%= HiddenField1.ClientID %>").val();
+            //if (pagename1 == "usefullvideos") {
+            //    $('#header').addClass('default');
+            //    $('#header').removeClass('transparent');
+            //}
+            //else {
+            //    $('#header').addClass('default');
+            //}
+            //if (pagename1 == "Dosage") {
+            //    $('#header').addClass('default');
+            //    $('#header').removeClass('transparent');
+            //}
+            //else {
+            //    $('#header').addClass('default');
+            //}
+            //if (pagename1 == "Potency") {
+
+            //    $('#header').addClass('default');
+            //    $('#header').removeClass('transparent');
+            //}
+            //else {
+            //    $('#header').addClass('default');
+            //}
+            if (pagename1 == "usefullvideos") {
+                $('#header').addClass('default');
+                $('#header').removeClass('dark');
+            }
+            else {
+                $('#header').addClass('default');
+            }
+            if (pagename1 == "Dosage") {
+                $('#header').addClass('default');
+                $('#header').removeClass('dark');
+            }
+            else {
+                $('#header').addClass('default');
+            }
+            if (pagename1 == "Potency") {
+
+                $('#header').addClass('default');
+                $('#header').removeClass('dark');
+            }
+            else {
+                $('#header').addClass('default');
+            }
+
+
+            if (pagename == "Home") {
+                $('#link1').addClass('active');
+                $('#link2').removeClass('active');
+                $('#link3').removeClass('active');
+                $('#link4').removeClass('active');
+                $('#link33').removeClass('active');
+                $('#link44').removeClass('active');
+                $('#link55').removeClass('active');
+            }
+            else if (pagename == "Cell") {
+                $('#link2').addClass('active');
+                $('#link1').removeClass('active');
+                $('#link3').removeClass('active');
+                $('#link4').removeClass('active');
+                $('#link33').removeClass('active');
+                $('#link44').removeClass('active');
+                $('#link55').removeClass('active');
+            }
+            else if (pagename == "ailments") {
+                $('#link3').addClass('active');
+                $('#link1').removeClass('active');
+                $('#link2').removeClass('active');
+                $('#link4').removeClass('active');
+                $('#link33').removeClass('active');
+                $('#link44').removeClass('active');
+                $('#link55').removeClass('active');
+            }
+            else if (pagename == "know_my_cell_salts") {
+                $('#link4').addClass('active');
+                $('#link1').removeClass('active');
+                $('#link3').removeClass('active');
+                $('#link2').removeClass('active');
+                $('#link33').removeClass('active');
+                $('#link44').removeClass('active');
+                $('#link55').removeClass('active');
+            }
+            else if (pagename == "Consult_online") {
+                $('#link33').addClass('active');
+                $('#link4').removeClass('active');
+                $('#link1').removeClass('active');
+                $('#link3').removeClass('active');
+                $('#link2').removeClass('active');
+                $('#link44').removeClass('active');
+                $('#link55').removeClass('active');
+            }
+            else if (pagename == "FAQ") {
+                $('#link44').addClass('active');
+                $('#link33').removeClass('active');
+                $('#link4').removeClass('active');
+                $('#link1').removeClass('active');
+                $('#link3').removeClass('active');
+                $('#link2').removeClass('active');
+                $('#link55').removeClass('active');
+            }
+            else if (pagename == "meditation4health") {
+                $('#link55').addClass('active');
+                $('#link44').removeClass('active');
+                $('#link33').removeClass('active');
+                $('#link4').removeClass('active');
+                $('#link1').removeClass('active');
+                $('#link3').removeClass('active');
+                $('#link2').removeClass('active');
+            }
+
+        });
+    </script>
+       <link rel="stylesheet" href="Content/video-js.css"/>
+    <script src="../Scripts/video.js"></script>
+<%--    <script src="../Scripts/video.dev.js"></script>--%>
+    <script>
+    $(document).ready(function () {
+        //var VideoElements = document.getElementsByTagName('video');
+        //for (var i = 0; i < VideoElements.length; i++) {
+        //    videojs(VideoElements[i]).ready(function () {
+        //        var myPlayer = this;
+        //    });
+        //}
+  
+});
+</script>
+    <style type="text/css">
+        .header img {
+            float: left;
+        }
+
+        /*.header b {
+            position: relative;
+            top: 0px;
+            left: 0px;
+            color: white;
+            font-size: 25px;
+            float: left;
+        }
+
+        .header span {
+            position: relative;
+           
+            color: white;
+            float: left;
+        }*/
+
+        p {
+            line-height: 1.2;
+        }
+        /*.pad_top{
+            padding-top:200px;
+        }*/
+        a {
+            cursor: pointer;
+        }
+
+        .mega-menu .menu-links > li > a {
+            text-transform: uppercase;
+            font-size: 15px;
+            font-weight: 500;
+            line-height: 20px;
+        }
+
+        .mega-menu .drop-down a, .mega-menu .drop-down-tab-bar a {
+            font-size: 15px;
+            display: inline-block;
+            padding: 8px 0;
+            width: 100%;
+            max-width: 100%;
+            text-transform: capitalize;
+        }
+
+        hr {
+            border: 0;
+            width: 100%;
+            background-color: #20B2AA;
+            height: 1px;
+        }
+
+        .text {
+            align-items: center;
+        }
+
+                .centerr {
+            position: fixed;
+            top: 28%;
+            right: 0px;
+            width: 130px;
+            height: 0px;
+            z-index: 9999;
+            margin-top: -15px;
+            border: thin;
+        }
+
+                 .llol {
+            border-radius: 50%;
+        }
+
+    </style>
+</head>
+<body oncontextmenu="return false">
+
+    <div class="wrapper">
+
+        <!--=================================
+ preloader -->
+
+
+        <!--=================================
+ preloader -->
+
+        <!--=================================
+ header -->
+        <button type="button" style="display: none;" id="btnShowPopup" class="button large"
+            data-toggle="modal" data-target="#myModal111" data-backdrop="static" data-keyboard="false">
+        </button>
+          <button type="button" style="display: none;" id="btnShowPopup2" class="button large"
+            data-toggle="modal" data-target="#myModal1112" data-backdrop="static" data-keyboard="false">
+        </button>
+        <button type="button" style="display: none;" id="btnShowPopupp" class="button large"
+            data-toggle="modal" data-target="#myModal1111" data-backdrop="static" data-keyboard="false">
+        </button>
+        <button type="button" style="display: none;" id="btnShowPopuppp" class="button large"
+            data-toggle="modal" data-target="#myModal11111" data-backdrop="static" data-keyboard="false">
+        </button>
+     
+        <header id="header" class="header dark fullWidth" style="z-index: 99999;">
+        <%--<header id="header" class="header default transparent fullWidth" style="z-index: 99999;">--%>
+        
+      
+           <%-- <div class="topbar">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+                            <div class="topbar-call text-left">
+                                <ul>
+                                    <li><i class="fa fa-envelope-o theme-color"></i>hogwartsinstitute@gmail.com</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+                            <div class="topbar-social text-right">
+                                <ul>
+                                    <li><a href="https://www.facebook.com/hogwartsinstitute/" target="_blank"><span class="ti-facebook"></span></a></li>
+                                    <li><a href="" target="_blank"><span class="ti-youtube"></span></a></li>
+                                    <li><a href="" target="_blank"><span class="ti-google"></span></a></li>
+                                    <li><a onclick="lolp2();" ><span class="fa fa-shopping-cart icon" ></span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>--%>
+            <div class="menu">
+                <!-- menu start -->
+                <nav id="menu" class="mega-menu">
+                    <!-- menu list items container -->
+                    <section class="menu-list-items">
+                        <div class="container-fluid">
+
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12">
+                                    <!-- menu logo -->
+
+                                    <ul class="header menu-logo">
+                                        <li>
+                                            <a href="Default">
+                                                <img id="logo_img" src="images/wp2296420_small.jpg" alt="logo" />
+                                                <p style="float: left; position: relative; color: white; font-size: 25px; top: 5px;">&nbsp; Hogwarts Institute</p>
+                                                <p style="color: white; padding-left: 105px;">so you can learn it by yourself !</p>
+                                            </a>
+                                        </li>
+                                    </ul>
+
+
+
+
+
+
+                                    <!-- menu links -->
+                                    <div class="menu-bar">
+                                        <ul class="menu-links">
+                                            <li id="link1" class="active">
+                                                <a href="Default">Home</a>
+                                            </li>
+                                            <li id="link2">
+                                                <%--<a href="javascript:void(0)">Cell Salts <i class="fa fa-angle-down fa-indicator"></i></a>
+                                                <!-- drop down multilevel  -->
+                                                <ul class="drop-down">
+
+                                                    <li><a href="cell_salt">Know My Cell Salt </a></li>
+                                                    <li><a href="BioCombinations">Bio Combinations</a></li>
+                                                    <li><a href="cellsalts4pets">CellSalts4Pets</a></li>
+                                                    <li><a href="cellsalts4sports">CellSalts4Sports</a></li>
+                                                    <li><a href="Dosage">Dosage</a></li>
+                                                    <li><a href="Potency">Potency</a></li>
+                                                    <li><a href="Dos_Donts">Do's & Dont's</a></li>
+                                                    <li><a href="usefullvideos">Usefull Video</a></li>
+
+
+                                                </ul>--%>
+                                            </li>
+                                            <li id="link3">
+                                               <%-- <a href="ailments">Ailments</a>--%>
+                                            </li>
+
+                                            <li id="link4">
+                                               <%-- <a href="javascript:void(0)">Cell Salts Finder <i class="fa fa-angle-down fa-indicator"></i></a>
+                                                <!-- drop down multilevel  -->
+                                                <ul class="drop-down">
+                                                    <li><a onclick="lol();">By Symptoms </a></li>
+                                                    <li><a onclick="lol();">By Deficiencies</a></li>
+                                                    <li><a onclick="lol();">By Birth Chart</a></li>
+                                                    <li><a onclick="lol();">By Facial Analysis</a></li>
+                                                </ul>--%>
+                                            </li>
+                                            <li id="link33">
+                                          <%--      <a onclick="lol2();">Consult online</a>--%>
+                                            </li>
+                                           
+                                            <li id="link55">
+                                                <%-- <a href="javascript:void(0)">Concurrent Therapies <i class="fa fa-angle-down fa-indicator"></i></a>
+                                                <ul class="drop-down">
+                                                       <li><a href="meditation4health">Meditation</a></li>
+                                                    <li><a href="Angelcardreading">Angel card reading</a></li>
+                                                      <li><a href="Tarotcardreading">Tarot card reading</a></li>
+                                                </ul>--%>
+                                    
+                                            </li>
+                                             <li id="link44">
+                                                <a href="service.aspx">Service</a>
+                                            </li>
+                                            <li>
+                                                <a href="Reports/login">Login</a>
+                                            </li>
+
+                                        </ul>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </nav>
+                <!-- menu end -->
+            </div>
+        </header>
+
+        <!--=================================
+ header -->
+
+        <form id="form1" runat="server">
+            <asp:HiddenField runat="server" ID="pagename" />
+            <asp:HiddenField runat="server" ID="HiddenField1" />
+            <div>
+                <asp:ScriptManager runat="server" ScriptMode="Release" EnablePageMethods="true"></asp:ScriptManager>
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+        </form>
+
+
+
+        <!--=================================
+ footer -->
+
+        <footer class="footer footer-topbar black-bg">
+            <div class="copyright">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6 col-sm-6">
+
+                            <%--   <img id="logo_img" src="images/logonew.png" alt="logo" height="35">--%>
+
+                            <%-- <img class="img-responsive mb-10" id="logo-footer" src="images/logonew.png" alt="">
+                            <b style="color:white; font-size:20px; padding-bottom:20px;">&nbsp; Cell Salts For Health</b>--%>
+                            <a href="Default">
+                                <img id="logo_imgg" src="images/wp2296420_small.jpg" alt="logo" height="20">
+                                <b style="color: white; font-size: 15px; padding-bottom: 20px;">&nbsp; Hogwarts Institute</b>
+
+                            </a>
+                            <div class="footer-text">
+                                <p>
+                                    ©Copyright <span id="copyright">
+                                        <script>document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))</script>
+                                    </span><a href="#">hogwartsinstitute </a>All Rights Reserved
+                                </p>
+                                <p><a class="text-white" href="aboutus">About Us</a> </p>
+                            </div>
+                            <%--              <a href="http://www.reliablecounter.com" target="_blank">
+                                <img src="https://www.reliablecounter.com/count.php?page=https://cellsalts4health.com/&digit=style/plain/6/&reloads=0" alt="joomla visitor counter" title="joomla visitor counter" border="0"></a><br />
+                            <a href="http://www.reliablecounter.com/fr/" target="_blank" style="font-family: Verdana; font-size: 15px; color: white; text-decoration: none;">Visitor Number </a>--%>
+                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 col-xx-12 xs-mb-30">
+                                <div class="counter left-icon theme-color" style="display: none;">
+                                    <span class="icon ti-user theme-color" aria-hidden="true"></span>
+                                    <span id="divMyID" runat="server" class="timer" data-to="0" data-speed="1000"></span>
+                                </div>
+                                <%-- <div class="footer-social">
+                                    <ul class="list-inline text-left">
+                                        <li><a class="text-white" href="aboutus">About Us</a> </li>
+                                    </ul>
+
+                                </div>--%>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-sm-6">
+                            <div class="footer-social text-right">
+                                <p><a class="text-white" href="terms_and_conditions">Terms of use</a> |  <a class="text-white" href="contact_us">Contact Us</a>  </p>
+                                <%--<ul class="list-inline text-right">
+                                    <li><a class="text-white" href="terms_and_conditions">Terms of use</a> |  <a class="text-white" href="contact_us">Contact Us</a>  </li>
+                                </ul>--%>
+                            </div>
+                            <div class="social-icons color clearfix pull-right mt-20">
+                                <label style="font-weight: bolder; text-align: center;" class="text-white">Follow us :</label>
+                                <ul class="clearfix">
+                                    <li class="social-facebook"><a href="https://www.facebook.com/hogwartsinstitute/" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                                    <li class="social-youtube"><a href="" target="_blank"><i class="fa fa-youtube"></i></a></li>
+                                    <li class="social-gplus"><a href="" target="_blank"><i class="fa fa-google-plus"></i></a></li>
+                                    <li class="sharethis-inline-share-buttons"></li>
+
+
+
+                                    <%--  <li class="social-twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                    <li class="social-dribbble"><a href="#"><i class="fa fa-dribbble"></i></a></li>
+                                    <li class="social-linkedin"><a href="#"><i class="fa fa-linkedin"></i></a></li>--%>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <!--=================================
+ footer -->
+
+
+
+
+    </div>
+
+
+
+
+
+    <div id="back-to-top"><a class="top arrow" href="#top"><i class="fa fa-angle-up"></i><span>TOP</span></a></div>
+
+    <!--=================================
+ jquery -->
+
+    <!-- jquery -->
+
+
+    <!-- plugins-jquery -->
+    <script type="text/javascript" src="js/plugins-jquery.js"></script>
+
+    <!-- plugin_path -->
+    <script type="text/javascript">var plugin_path = 'js/';</script>
+
+
+    <!-- REVOLUTION JS FILES -->
+    <script type="text/javascript" src="revolution/js/jquery.themepunch.tools.min.js"></script>
+    <script type="text/javascript" src="revolution/js/jquery.themepunch.revolution.min.js"></script>
+
+    <!-- SLIDER REVOLUTION 5.0 EXTENSIONS  (Load Extensions only on Local File Systems !  The following part can be removed on Server for On Demand Loading) -->
+    <script type="text/javascript" src="revolution/js/extensions/revolution.extension.actions.min.js"></script>
+    <script type="text/javascript" src="revolution/js/extensions/revolution.extension.carousel.min.js"></script>
+    <script type="text/javascript" src="revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
+    <script type="text/javascript" src="revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
+    <script type="text/javascript" src="revolution/js/extensions/revolution.extension.migration.min.js"></script>
+    <script type="text/javascript" src="revolution/js/extensions/revolution.extension.navigation.min.js"></script>
+    <script type="text/javascript" src="revolution/js/extensions/revolution.extension.parallax.min.js"></script>
+    <script type="text/javascript" src="revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
+    <script type="text/javascript" src="revolution/js/extensions/revolution.extension.video.min.js"></script>
+    <!-- revolution custom -->
+    <script type="text/javascript" src="revolution/js/revolution-custom.js"></script>
+
+    <!-- custom -->
+    <script type="text/javascript" src="js/custom.js"></script>
+    <div class="modal fade" id="myModal111" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #20B2AA;">
+                    <button type="button" class="close" style="color: black;" data-dismiss="modal" onclick="lol1();" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <div class="section-title mb-10">
+                        <h2 style="text-align: center; color: #fff;">Cell Salts Finder !</h2>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div class="text-center">
+                       <%-- <h3><b>Please Login to find your cell salts</b></h3>--%>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div style="padding-left: 230px;">
+                        <button type="button" class="button large" data-dismiss="modal" onclick="lol1();">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="myModal1112" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #20B2AA;">
+                    <button type="button" class="close" style="color: black;" data-dismiss="modal" onclick="lol11();" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <div class="section-title mb-10">
+                        <h2 style="text-align: center; color: #fff;">Order Medicine !</h2>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div class="text-center">
+                        <h3><b>Please SignUp For Order Medicine </b></h3>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div style="padding-left: 230px;">
+                        <button type="button" class="button large" data-dismiss="modal" onclick="lol11();">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="myModal1111" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #20B2AA;">
+                    <button type="button" class="close" style="color: black;" data-dismiss="modal" onclick="lol1();" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <div class="section-title mb-10">
+                        <h2 style="text-align: center; color: #fff;">Consult Online !</h2>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div class="text-center">
+                        <h3><b>Please Login For Consult Online</b></h3>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div style="padding-left: 230px;">
+                        <button type="button" class="button large" data-dismiss="modal" onclick="lol1();">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="myModal11111" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #20B2AA;">
+                    <button type="button" class="close" style="color: black;" data-dismiss="modal" onclick="lol11();" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <div class="section-title mb-10">
+                        <h2 style="text-align: center; color: #fff;">Meditation4health Online !</h2>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div class="text-center">
+                        <h3><b>Please SignUp For Meditation4health</b></h3>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div style="padding-left: 230px;">
+                        <button type="button" class="button large" data-dismiss="modal" onclick="lol11();">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <%-- <div class="centerr hidden-sm-down" runat="server" id="rightheader">
+        <a onclick="lol();">
+            <img style="border: solid #20B2AA; height: 60px; width: 70px;" class="img-responsive center-block llol" src="images/homepage/Cell Salt Finder.gif" alt=""><p style="padding-bottom: 4px; padding-top: 5px; font-weight: bolder; font-size: 13px;"></p>
+        </a>
+        <a onclick="lol();">
+            <img style="border: solid #20B2AA; height: 60px; width: 70px;" class="img-responsive center-block llol" src="images/homepage/consult online.jpg" alt=""><p style="padding-bottom: 4px; padding-top: 5px; font-weight: bolder; font-size: 13px;"></p>
+        </a>
+        <a href="meditation4health">
+            <img style="border: solid #20B2AA; height: 60px; width: 70px;" class="img-responsive center-block llol" src="images/homepage/meditation.png" alt=""><p style="padding-bottom: 4px; padding-top: 5px; font-weight: bolder; font-size: 13px;"></p>
+        </a>
+        <a href="Angelcardreading">
+            <img style="border: solid #20B2AA; height: 60px; width: 70px;" class="img-responsive center-block llol" src="images/homepage/angel.png" alt=""><p style="padding-bottom: 4px; padding-top: 5px; font-weight: bolder; font-size: 13px;"></p>
+        </a>
+          <a onclick="lolp2()">
+            <img style="border: solid #20B2AA; height: 60px; width: 70px;" class="img-responsive center-block llol" src="images/homepage/parcel.png" alt=""><p style="padding-bottom: 4px; padding-top: 5px; font-weight: bolder; font-size: 13px;"></p>
+        </a>
+    </div>--%>
+</body>
+</html>

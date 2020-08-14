@@ -1,0 +1,41 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="ReportMasterPage.master.cs" Inherits="ReportMasterPage" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="../Content/video-js.css"/>
+
+<script src="../Scripts/video.js"></script>
+<%--    <script src="../Scripts/video.dev.js"></script>--%>
+    <script>
+    $(document).ready(function () {
+        var VideoElements = document.getElementsByTagName('video');
+        for (var i = 0; i < VideoElements.length; i++) {
+            videojs(VideoElements[i]).ready(function () {
+                var myPlayer = this;
+            });
+        }
+    //$('#myframe').hide('src');
+    //$('#VideoPlayer').hide('src');
+
+    //$('#VideoPlayer').each(function (num, val) {
+    //    $(this).attr('src', '')
+    //});
+});
+</script>
+</head>
+<body oncontextmenu="return false;" >
+    <form id="form1" runat="server">
+    <div>
+           
+        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+        </asp:ContentPlaceHolder>
+    </div>
+    </form>
+</body>
+</html>

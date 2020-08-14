@@ -1,0 +1,222 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Configuration;
+using System.Globalization;
+using System.IO;
+using System.Linq;
+using System.Net;
+using System.Text.RegularExpressions;
+using System.Web;
+
+/// <summary>
+/// Summary description for Email_Sms
+/// </summary>
+public class Email_Sms
+{
+    bool invalid = false;
+	
+
+    public void sendmail(string email, string subject, string msg_body)
+    {
+        try
+        {
+            string HostAdd = ConfigurationManager.AppSettings["Host"].ToString();
+            string FromEmailid = ConfigurationManager.AppSettings["FromMail"].ToString();
+            string Pass = ConfigurationManager.AppSettings["Password"].ToString();
+            string user = ConfigurationManager.AppSettings["user"].ToString();
+            CDO.Message oMsg = new CDO.Message();
+            CDO.IConfiguration iConfg = oMsg.Configuration;
+            ADODB.Fields oFields = iConfg.Fields;
+            ADODB.Field sendusing = oFields["http://schemas.microsoft.com/cdo/configuration/sendusing"];
+            ADODB.Field smtpauthenticate = oFields["http://schemas.microsoft.com/cdo/configuration/smtpauthenticate"];
+            ADODB.Field sendusername = oFields["http://schemas.microsoft.com/cdo/configuration/sendusername"];
+            ADODB.Field sendpassword = oFields["http://schemas.microsoft.com/cdo/configuration/sendpassword"];
+            ADODB.Field smtpserver = oFields["http://schemas.microsoft.com/cdo/configuration/smtpserver"];
+            ADODB.Field smtpserverport = oFields["http://schemas.microsoft.com/cdo/configuration/smtpserverport"];
+            ADODB.Field smtpusessl = oFields["http://schemas.microsoft.com/cdo/configuration/smtpusessl"];
+            sendusing.Value = 2;
+            smtpauthenticate.Value = 1;
+            sendusername.Value = user;
+            sendpassword.Value = Pass;
+            smtpserver.Value = HostAdd;
+            smtpserverport.Value = 465;
+            smtpusessl.Value = true;
+            oFields.Update();
+            oMsg.Subject = subject;
+            oMsg.From = FromEmailid;
+            oMsg.To = email;
+            //if (cc != null)
+            //    oMsg.CC = cc;
+            //if (bcc != null)
+            //    oMsg.CC = cc;
+            //oMsg.BCC = bcc;
+            if (oMsg.HTMLBody != null)
+                oMsg.HTMLBody = msg_body;
+            else
+                oMsg.TextBody = "";
+            oMsg.Send();
+
+        }
+        catch (Exception ex)
+        {
+            Gen_Error_Rpt.Write_Error("Email Sent failed..", ex);
+        }
+
+
+    }
+    public string send_normal_sms(string mob_no, string msgt)
+    {
+        string sms_url = ConfigurationManager.AppSettings["sms_url"].ToString();
+        string sender = ConfigurationManager.AppSettings["sms_sender"].ToString();
+        string password = ConfigurationManager.AppSettings["sms_Password"].ToString();
+        string user_name = ConfigurationManager.AppSettings["sms_user"].ToString();
+
+        Int16 concat;
+        int lt = msgt.Length;
+        if (lt < 160)
+        {
+            concat = 0;
+        }
+        else
+        {
+            concat = 1;
+        }
+        string msg_rpt = null, body = null;
+        //string msg_text = "";
+        string s = msgt;
+        body = "uname=" + user_name + "&pass=" + password + "&send=" + sender + "&dest=91" + mob_no + "&msg=" + msgt + "&concat=" + concat;
+        //body = "uname=egramsuraj.auth&pass=Auth.egram@123&send=GRMSURJ&dest=91" + mob_no+ "&msg=" + msg;
+        try
+        {
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(sms_url + body);
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+            String ver = response.ProtocolVersion.ToString();
+
+            StreamReader reader = new StreamReader(response.GetResponseStream());
+            return msg_rpt = reader.ReadToEnd();
+        }
+        catch
+        {
+            return msg_rpt = "failure";
+        }
+    }
+
+    public string send_unicode_sms(string mob_no, string msg)
+    {
+        string sms_url = ConfigurationManager.AppSettings["sms_url"].ToString();
+        string sender = ConfigurationManager.AppSettings["sms_sender"].ToString();
+        string password = ConfigurationManager.AppSettings["sms_Password"].ToString();
+        string user_name = ConfigurationManager.AppSettings["sms_user"].ToString();
+        ///<summary>
+        ///<para> This method is for sending unicode sms which manages the sms id & part according to its length
+        ///</summary>
+        string msg_rpt = null, body;
+        string get_msg_len = "", msg_text = "", msg_body1 = "";
+        string s = msg;
+        int len = 1, counter = 1, single_sms_length = 268;
+        //string[] myarray;
+
+        body = "uname=" + user_name + "&pass=" + password + "&send=" + sender + "&dest=91" + mob_no + "&udhi=1&dcs=8&msg=";
+
+        foreach (char c in s)
+        {
+            int tmp = c;
+            get_msg_len += String.Format("{0:x4}", (uint)System.Convert.ToUInt16(tmp.ToString()));
+        }
+
+        int msg_length = get_msg_len.Length;
+
+
+        len += get_msg_len.Length / 269;
+
+        try
+        {
+            for (int i = 1; i <= len; i++)
+            {
+
+                foreach (char c in get_msg_len)
+                {
+                    if (counter <= single_sms_length)
+                    {
+                        msg_body1 += c;
+
+                        counter++;
+                    }
+
+                    else
+                    {
+                        break;
+                    }
+                }
+                msg_text = "050003FA0" + len + "0" + i + msg_body1;
+                int l = msg_text.Length;
+                HttpWebRequest request_large = (HttpWebRequest)WebRequest.Create(sms_url + body + msg_text);
+                HttpWebResponse response_large = (HttpWebResponse)request_large.GetResponse();
+                String ver_large = response_large.ProtocolVersion.ToString();
+                StreamReader reader_large = new StreamReader(response_large.GetResponseStream());
+                msg_rpt = reader_large.ReadToEnd();
+                single_sms_length += 268;
+                if (get_msg_len.Length > 268)
+                {
+                    get_msg_len = get_msg_len.Remove(1, 268);
+                }
+                msg_body1 = "";
+            }
+            return msg_rpt;
+        }
+        catch (Exception f)
+        {
+            return msg_rpt = "failure";
+            //return msg_rpt = f.Message.ToString();
+        }
+    }
+    public bool IsValidEmail(string strIn)
+    {
+        invalid = false;
+        if (String.IsNullOrEmpty(strIn))
+            return false;
+
+        // Use IdnMapping class to convert Unicode domain names. 
+        try
+        {
+            strIn = Regex.Replace(strIn, @"(@)(.+)$", this.DomainMapper,
+                                  RegexOptions.None, TimeSpan.FromMilliseconds(200));
+        }
+        catch (RegexMatchTimeoutException)
+        {
+            return false;
+        }
+
+        if (invalid)
+            return false;
+
+        // Return true if strIn is in valid e-mail format. 
+        try
+        {
+            return Regex.IsMatch(strIn,
+                  @"^(?("")("".+?(?<!\\)""@)|(([0-9a-z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-z])@))" +
+                  @"(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-z][-\w]*[0-9a-z]*\.)+[a-z0-9][\-a-z0-9]{0,22}[a-z0-9]))$",
+                  RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(250));
+        }
+        catch (RegexMatchTimeoutException)
+        {
+            return false;
+        }
+    }
+    private string DomainMapper(Match match)
+    {
+        // IdnMapping class with default property values.
+        IdnMapping idn = new IdnMapping();
+
+        string domainName = match.Groups[2].Value;
+        try
+        {
+            domainName = idn.GetAscii(domainName);
+        }
+        catch (ArgumentException)
+        {
+            invalid = true;
+        }
+        return match.Groups[1].Value + domainName;
+    }
+}
